@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Çimtaş İnşaat — İnşaat, Mühendislik & Mimarlık</title>
+  <meta name="description" content="Çimtaş İnşaat — 1997'den bugüne güvenle inşa ediyoruz. İnşaat-taahhüt, mimarlık-projelendirme, peyzaj ve jeolojik etüt hizmetleri. Ankara." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink:    { DEFAULT: '#0f1115', soft: '#161a20', line: '#262b33' },
+            stone:  { 100: '#f5f4f1', 200: '#e7e5df', 400: '#a8a59b', 600: '#6c6a62' },
+            amber:  { DEFAULT: '#f59e0b', dark: '#d97706' },
+          },
+          maxWidth: { content: '1200px' },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .eyebrow { letter-spacing: .22em; }
+
+    /* Logo koyu gri → dark zeminde beyaz */
+    .logo-img { filter: brightness(0) invert(1); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation: none !important; }
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid #f59e0b; outline-offset: 3px; border-radius: 2px;
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(180deg, rgba(15,17,21,.55) 0%, rgba(15,17,21,.35) 40%, rgba(15,17,21,.92) 100%),
+        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover; background-position: center;
+    }
+  </style>
+</head>
+
+<body class="bg-ink text-stone-100 antialiased selection:bg-amber selection:text-ink">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-amber focus:text-ink focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold">İçeriğe geç</a>
+
+  <!-- ===== Header ===== -->
+  <header id="top" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300" data-header>
+    <div class="mx-auto max-w-content px-5 sm:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="#top" class="flex items-center" aria-label="Çimtaş İnşaat ana sayfa">
+          <img src="logo-cimtas.png" alt="Çimtaş İnşaat" class="logo-img h-9 w-auto">
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-200" aria-label="Ana menü">
+          <a href="#services" class="hover:text-amber transition-colors">Hizmetler</a>
+          <a href="#projects" class="hover:text-amber transition-colors">Projeler</a>
+          <a href="#process" class="hover:text-amber transition-colors">Süreç</a>
+          <a href="#about" class="hover:text-amber transition-colors">Hakkımızda</a>
+          <a href="#contact" class="inline-flex items-center gap-1.5 rounded-full bg-amber px-5 py-2.5 font-semibold text-ink hover:bg-amber-dark transition-colors">
+            Teklif alın
+          </a>
+        </nav>
+
+        <button id="menuBtn" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-md text-stone-100 hover:bg-ink-line" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileNav">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileNav" class="md:hidden hidden border-t border-ink-line bg-ink/95 backdrop-blur">
+      <nav class="mx-auto max-w-content px-5 py-4 flex flex-col gap-1 text-base" aria-label="Mobil menü">
+        <a href="#services" class="py-3 px-2 rounded-md hover:bg-ink-line">Hizmetler</a>
+        <a href="#projects" class="py-3 px-2 rounded-md hover:bg-ink-line">Projeler</a>
+        <a href="#process" class="py-3 px-2 rounded-md hover:bg-ink-line">Süreç</a>
+        <a href="#about" class="py-3 px-2 rounded-md hover:bg-ink-line">Hakkımızda</a>
+        <a href="#contact" class="mt-2 py-3 px-2 rounded-md bg-amber text-ink font-semibold text-center">Teklif alın</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero ===== -->
+    <section class="relative min-h-[100svh] flex items-end hero-overlay">
+      <div class="mx-auto max-w-content w-full px-5 sm:px-8 pb-20 pt-32">
+        <p class="eyebrow text-xs font-semibold uppercase text-amber mb-5 reveal">İnşaat · Mühendislik · Mimarlık</p>
+        <h1 class="font-display font-bold leading-[1.05] tracking-tight text-5xl sm:text-6xl lg:text-7xl max-w-4xl reveal">
+          1997'den bugüne<br class="hidden sm:block"> güvenle inşa ediyoruz.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-stone-200 reveal">
+          Yenilikçi, çevre dostu ve müşteri memnuniyetini merkezine alan bir anlayışla; konuttan kamu yapılarına yüzlerce projeyi hayata geçirdik.
+        </p>
+        <div class="mt-9 flex flex-col sm:flex-row gap-3 reveal">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-full bg-amber px-7 py-3.5 font-semibold text-ink hover:bg-amber-dark transition-colors">
+            Bize ulaşın
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#projects" class="inline-flex items-center justify-center gap-2 rounded-full border border-stone-400/40 px-7 py-3.5 font-semibold text-stone-100 hover:border-amber hover:text-amber transition-colors">
+            Projeleri inceleyin
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="border-y border-ink-line bg-ink-soft">
+      <div class="mx-auto max-w-content px-5 sm:px-8 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="reveal">
+          <div class="font-display text-4xl font-bold text-amber">1997</div>
+          <div class="mt-1 text-sm text-stone-400">Kuruluş yılı</div>
+        </div>
+        <div class="reveal">
+          <div class="font-display text-4xl font-bold text-amber">25<span class="text-2xl align-top">+</span></div>
+          <div class="mt-1 text-sm text-stone-400">Yıllık tecrübe</div>
+        </div>
+        <div class="reveal">
+          <div class="font-display text-4xl font-bold text-amber">300<span class="text-2xl align-top">+</span></div>
+          <div class="mt-1 text-sm text-stone-400">Tamamlanan konut & yapı</div>
+        </div>
+        <div class="reveal">
+          <div class="font-display text-4xl font-bold text-amber">4</div>
+          <div class="mt-1 text-sm text-stone-400">Uzmanlık alanı</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section id="services" class="scroll-mt-24 py-24 sm:py-32">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="max-w-2xl reveal">
+          <p class="eyebrow text-xs font-semibold uppercase text-amber mb-4">Ne yapıyoruz</p>
+          <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Projeden teslime, tek elden.</h2>
+          <p class="mt-5 text-stone-400 text-lg">İnşaat, mühendislik ve mimarlıkta bütün süreci yöneten tek ve sorumlu bir ekip.</p>
+        </div>
+
+        <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-line rounded-2xl overflow-hidden border border-ink-line">
+          <article class="group bg-ink p-8 hover:bg-ink-soft transition-colors reveal">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 text-amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6h6M4 2h10l6 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M8 13h8M8 17h5"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-semibold">İnşaat – Taahhüt</h3>
+            <p class="mt-3 text-stone-400">Konut, kamu ve özel yapıların anahtar teslim inşaatı; planlama, maliyet kontrolü ve saha yönetimi.</p>
+          </article>
+
+          <article class="group bg-ink p-8 hover:bg-ink-soft transition-colors reveal">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 text-amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-5h6v5"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-semibold">Mimarlık – Projelendirme</h3>
+            <p class="mt-3 text-stone-400">Konsept tasarımdan uygulama projesine; işlevsel, sürdürülebilir ve estetik mimari çözümler.</p>
+          </article>
+
+          <article class="group bg-ink p-8 hover:bg-ink-soft transition-colors reveal">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 text-amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8M12 22v-6"/><path d="M8 6c0 2 1.8 4 4 4s4-2 4-4M5 14c2.2 0 4 1.8 4 4M19 14c-2.2 0-4 1.8-4 4"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-semibold">Peyzaj – Uygulama</h3>
+            <p class="mt-3 text-stone-400">Yaşam alanlarını tamamlayan peyzaj tasarımı ve sahada uygulaması; yeşil ve çevre dostu çözümler.</p>
+          </article>
+
+          <article class="group bg-ink p-8 hover:bg-ink-soft transition-colors reveal">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 text-amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-semibold">Jeolojik Etüt – Zemin Raporları</h3>
+            <p class="mt-3 text-stone-400">Zemin etütleri ve jeolojik raporlama ile sağlam temel; güvenli ve mevzuata uygun yapılaşma.</p>
+          </article>
+
+          <article class="group bg-ink p-8 hover:bg-ink-soft transition-colors reveal">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 text-amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-semibold">Konut Projeleri</h3>
+            <p class="mt-3 text-stone-400">Modern, depreme dayanıklı ve yaşanabilir konut projeleri; yüzlerce daire teslim edildi.</p>
+          </article>
+
+          <article class="group bg-ink p-8 hover:bg-ink-soft transition-colors reveal">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 text-amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl font-semibold">Kamu Yapıları</h3>
+            <p class="mt-3 text-stone-400">Kamu binaları ve sosyal donatı yapıları; kalite ve iş güvenliği standartlarıyla.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects" class="scroll-mt-24 py-24 sm:py-32 bg-ink-soft border-y border-ink-line">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+          <div class="max-w-2xl">
+            <p class="eyebrow text-xs font-semibold uppercase text-amber mb-4">Seçili işler</p>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Gururla inşa ettiğimiz yapılar.</h2>
+          </div>
+          <a href="#contact" class="text-amber font-semibold hover:text-amber-dark inline-flex items-center gap-1.5">
+            Projenizi konuşalım
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <a href="#contact" class="group relative block aspect-[4/5] overflow-hidden rounded-2xl reveal">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80" alt="Çimtaş Göksu Konutları" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <p class="text-xs text-amber font-semibold uppercase eyebrow">Konut</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Çimtaş Göksu Konutları</h3>
+              <p class="text-sm text-stone-400">4+1 daireler · Kat başı 3 daire · Ankara</p>
+            </div>
+          </a>
+
+          <a href="#contact" class="group relative block aspect-[4/5] overflow-hidden rounded-2xl reveal">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="Konut projesi" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <p class="text-xs text-amber font-semibold uppercase eyebrow">Konut</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Yenimahalle Konut Bloğu</h3>
+              <p class="text-sm text-stone-400">Çok katlı konut · Ankara</p>
+            </div>
+          </a>
+
+          <a href="#contact" class="group relative block aspect-[4/5] overflow-hidden rounded-2xl reveal">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=900&q=80" alt="Kamu yapısı" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <p class="text-xs text-amber font-semibold uppercase eyebrow">Kamu</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Sosyal Donatı Binası</h3>
+              <p class="text-sm text-stone-400">Kamu yapısı · Betonarme</p>
+            </div>
+          </a>
+
+          <a href="#contact" class="group relative block aspect-[4/5] overflow-hidden rounded-2xl reveal">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80" alt="Peyzaj uygulaması" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <p class="text-xs text-amber font-semibold uppercase eyebrow">Peyzaj</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Konut Bahçe Peyzajı</h3>
+              <p class="text-sm text-stone-400">Çevre düzenleme · Uygulama</p>
+            </div>
+          </a>
+
+          <a href="#contact" class="group relative block aspect-[4/5] overflow-hidden rounded-2xl reveal">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80" alt="İnşaat sahası" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <p class="text-xs text-amber font-semibold uppercase eyebrow">İnşaat</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Karma Kullanım Projesi</h3>
+              <p class="text-sm text-stone-400">Devam ediyor · Ankara</p>
+            </div>
+          </a>
+
+          <a href="#contact" class="group relative block aspect-[4/5] overflow-hidden rounded-2xl reveal">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" alt="Yüksek yapı inşaatı" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <p class="text-xs text-amber font-semibold uppercase eyebrow">İnşaat</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Çok Katlı Yapı</h3>
+              <p class="text-sm text-stone-400">Taahhüt · Betonarme</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Process ===== -->
+    <section id="process" class="scroll-mt-24 py-24 sm:py-32">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="max-w-2xl reveal">
+          <p class="eyebrow text-xs font-semibold uppercase text-amber mb-4">Nasıl çalışıyoruz</p>
+          <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Teslime giden disiplinli yol.</h2>
+        </div>
+
+        <ol class="mt-14 grid md:grid-cols-4 gap-8">
+          <li class="reveal">
+            <div class="font-display text-amber text-sm font-bold">01</div>
+            <div class="mt-3 h-px bg-ink-line"></div>
+            <h3 class="mt-5 font-display text-lg font-semibold">Keşif & Etüt</h3>
+            <p class="mt-2 text-stone-400 text-sm">Zemin etüdü, fizibilite ve risk değerlendirmesi; daha ilk çizgiden önce.</p>
+          </li>
+          <li class="reveal">
+            <div class="font-display text-amber text-sm font-bold">02</div>
+            <div class="mt-3 h-px bg-ink-line"></div>
+            <h3 class="mt-5 font-display text-lg font-semibold">Tasarım & Projelendirme</h3>
+            <p class="mt-2 text-stone-400 text-sm">Mimari ve mühendislik projelerinin birlikte, uyumlu şekilde geliştirilmesi.</p>
+          </li>
+          <li class="reveal">
+            <div class="font-display text-amber text-sm font-bold">03</div>
+            <div class="mt-3 h-px bg-ink-line"></div>
+            <h3 class="mt-5 font-display text-lg font-semibold">İnşaat & Uygulama</h3>
+            <p class="mt-2 text-stone-400 text-sm">Tedarik, planlama ve saha yönetimi; şeffaf ilerleme raporlamasıyla.</p>
+          </li>
+          <li class="reveal">
+            <div class="font-display text-amber text-sm font-bold">04</div>
+            <div class="mt-3 h-px bg-ink-line"></div>
+            <h3 class="mt-5 font-display text-lg font-semibold">Teslim & Destek</h3>
+            <p class="mt-2 text-stone-400 text-sm">Kalite kontrol, eksiksiz dokümantasyon ve teslim sonrası destek.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about" class="scroll-mt-24 py-24 sm:py-32 bg-ink-soft border-y border-ink-line">
+      <div class="mx-auto max-w-content px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center">
+        <div class="relative reveal">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1100&q=80" alt="Sahada proje inceleyen mühendisler" loading="lazy" class="rounded-2xl w-full aspect-[4/3] object-cover">
+          <div class="absolute -bottom-6 -right-2 sm:right-6 bg-amber text-ink rounded-xl p-5 shadow-xl max-w-[210px]">
+            <div class="font-display text-3xl font-bold">1997'den beri</div>
+            <div class="text-sm font-medium">Güvenle inşa ediyoruz</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="eyebrow text-xs font-semibold uppercase text-amber mb-4">Neden Çimtaş</p>
+          <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Mühendislik disiplini, mimari vizyon.</h2>
+          <p class="mt-5 text-stone-400 text-lg">1997'de Ankara'da kurulan Çimtaş İnşaat; inşaat, mühendislik ve mimarlık alanlarında faaliyet gösterir. Yenilikçi, çevre dostu ve müşteri memnuniyetini merkeze alan bir anlayışla yüzlerce konut, kamu yapısı, peyzaj ve jeolojik etüt işini tamamladık.</p>
+
+          <ul class="mt-8 space-y-4">
+            <li class="flex gap-3">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-amber" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+              <span><span class="font-semibold text-stone-100">Tek elden sorumluluk</span> — tüm süreci tek ekip yönetir, iş sahibi tek muhatap bulur.</span>
+            </li>
+            <li class="flex gap-3">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-amber" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+              <span><span class="font-semibold text-stone-100">Çevre dostu yaklaşım</span> — sürdürülebilir malzeme ve yeşil uygulama tercihleri.</span>
+            </li>
+            <li class="flex gap-3">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-amber" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+              <span><span class="font-semibold text-stone-100">Müşteri memnuniyeti</span> — şeffaf süreç, zamanında teslim, kalıcı güven.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonial ===== -->
+    <section class="py-24 sm:py-32">
+      <div class="mx-auto max-w-3xl px-5 sm:px-8 text-center reveal">
+        <svg viewBox="0 0 24 24" class="h-10 w-10 mx-auto text-amber/40" fill="currentColor"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H5.5A1.67 1.67 0 0 1 7.17 9.5V6zm10 0A5.17 5.17 0 0 0 12 11.17V18h6.83v-6.83H15.5a1.67 1.67 0 0 1 1.67-1.67V6z"/></svg>
+        <blockquote class="mt-6 font-display text-2xl sm:text-3xl font-medium leading-snug">
+          “Çimtaş İnşaat'la çalışmak güven verdi. Projeyi söz verdikleri kalite ve zamanda teslim ettiler; mühendislik ve mimari ekibin uyumu fark yaratıyor.”
+        </blockquote>
+        <figcaption class="mt-8 text-stone-400">
+          <span class="font-semibold text-stone-100">Göksu Konutları</span> · Daire sahibi
+        </figcaption>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="scroll-mt-24 py-24 sm:py-32 bg-ink-soft border-t border-ink-line">
+      <div class="mx-auto max-w-content px-5 sm:px-8 grid lg:grid-cols-2 gap-14">
+        <div class="reveal">
+          <p class="eyebrow text-xs font-semibold uppercase text-amber mb-4">İletişim</p>
+          <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Kalıcı bir şey inşa edelim.</h2>
+          <p class="mt-5 text-stone-400 text-lg">Projenizi bize anlatın. Bir iş günü içinde dönüş yapalım.</p>
+
+          <dl class="mt-10 space-y-5 text-stone-200">
+            <div class="flex items-center gap-3">
+              <svg viewBox="0 0 24 24" class="h-5 w-5 text-amber" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+903123151787" class="hover:text-amber">+90 (312) 315 17 87</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg viewBox="0 0 24 24" class="h-5 w-5 text-amber" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              <a href="mailto:info@cimtasinsaat.com.tr" class="hover:text-amber">info@cimtasinsaat.com.tr</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg viewBox="0 0 24 24" class="h-5 w-5 text-amber mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Ragıp Tüzün Mahallesi, Serdar Sokak No:113/6<br>Yenimahalle / ANKARA</span>
+            </div>
+          </dl>
+        </div>
+
+        <form class="reveal bg-ink border border-ink-line rounded-2xl p-6 sm:p-8" novalidate>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Ad Soyad <span class="text-amber">*</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name" class="w-full rounded-lg bg-ink-soft border border-ink-line px-4 py-3 text-stone-100 placeholder:text-stone-600 focus:border-amber" placeholder="Adınız Soyadınız">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">E-posta <span class="text-amber">*</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" class="w-full rounded-lg bg-ink-soft border border-ink-line px-4 py-3 text-stone-100 placeholder:text-stone-600 focus:border-amber" placeholder="ornek@eposta.com">
+            </div>
+          </div>
+          <div class="mt-5 grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="phone" class="block text-sm font-medium mb-2">Telefon</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" class="w-full rounded-lg bg-ink-soft border border-ink-line px-4 py-3 text-stone-100 placeholder:text-stone-600 focus:border-amber" placeholder="+90 (5xx) xxx xx xx">
+            </div>
+            <div>
+              <label for="type" class="block text-sm font-medium mb-2">Proje türü</label>
+              <select id="type" name="type" class="w-full rounded-lg bg-ink-soft border border-ink-line px-4 py-3 text-stone-100 focus:border-amber">
+                <option>İnşaat – Taahhüt</option>
+                <option>Mimarlık – Projelendirme</option>
+                <option>Peyzaj – Uygulama</option>
+                <option>Jeolojik Etüt – Zemin Raporu</option>
+                <option>Diğer</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-5">
+            <label for="message" class="block text-sm font-medium mb-2">Proje detayı <span class="text-amber">*</span></label>
+            <textarea id="message" name="message" rows="4" required class="w-full rounded-lg bg-ink-soft border border-ink-line px-4 py-3 text-stone-100 placeholder:text-stone-600 focus:border-amber" placeholder="Kapsam, konum, takvim, bütçe aralığı..."></textarea>
+          </div>
+          <p id="formNote" class="mt-4 text-sm hidden" role="status" aria-live="polite"></p>
+          <button type="submit" class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-full bg-amber px-7 py-3.5 font-semibold text-ink hover:bg-amber-dark transition-colors">
+            Gönder
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="bg-ink border-t border-ink-line">
+    <div class="mx-auto max-w-content px-5 sm:px-8 py-14">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div>
+          <a href="#top" class="flex items-center" aria-label="Çimtaş İnşaat">
+            <img src="logo-cimtas.png" alt="Çimtaş İnşaat" class="logo-img h-9 w-auto">
+          </a>
+          <p class="mt-3 text-sm text-stone-400 max-w-xs">1997'den bugüne güvenle inşa ediyoruz. İnşaat · Mühendislik · Mimarlık.</p>
+        </div>
+        <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-stone-400" aria-label="Alt menü">
+          <a href="#services" class="hover:text-amber">Hizmetler</a>
+          <a href="#projects" class="hover:text-amber">Projeler</a>
+          <a href="#process" class="hover:text-amber">Süreç</a>
+          <a href="#about" class="hover:text-amber">Hakkımızda</a>
+          <a href="#contact" class="hover:text-amber">İletişim</a>
+        </nav>
+      </div>
+      <div class="mt-10 pt-6 border-t border-ink-line flex flex-col sm:flex-row justify-between gap-3 text-xs text-stone-600">
+        <p>© <span id="year"></span> Çimtaş İnşaat. Tüm hakları saklıdır.</p>
+        <p>Ankara · 1997'den beri</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const header = document.querySelector('[data-header]');
+    const onScroll = () => {
+      if (window.scrollY > 24) header.classList.add('bg-ink/90', 'backdrop-blur', 'border-b', 'border-ink-line');
+      else header.classList.remove('bg-ink/90', 'backdrop-blur', 'border-b', 'border-ink-line');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+
+    const form = document.querySelector('form');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const invalid = [...form.querySelectorAll('[required]')].find(f => !f.value.trim());
+      if (invalid) {
+        invalid.focus();
+        note.textContent = 'Lütfen zorunlu alanları doldurun.';
+        note.className = 'mt-4 text-sm text-amber';
+        note.classList.remove('hidden');
+        return;
+      }
+      note.textContent = 'Teşekkürler — mesajınız alındı. Bir iş günü içinde dönüş yapacağız.';
+      note.className = 'mt-4 text-sm text-emerald-400';
+      note.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
